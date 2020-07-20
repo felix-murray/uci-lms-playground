@@ -22,31 +22,25 @@ function startRecording() {
 	console.log("recordButton clicked");
 
 	/*
-		Simple constraints object, for more advanced audio features see
-		https://addpipe.com/blog/audio-constraints-getusermedia/
+		Simple constraints object
 	*/
-    
     var constraints = { audio: true, video:false }
 
  	/*
     	Disable the record button until we get a success or fail from getUserMedia() 
 	*/
-
 	recordButton.disabled = true;
 	stopButton.disabled = false;
 	pauseButton.disabled = false
 
 	/*
-    	We're using the standard promise based getUserMedia() 
+    	Standard promise based getUserMedia() 
     	https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 	*/
-
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
 		console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
-
 		/*
 			create an audio context after getUserMedia is called
-			sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
 			the sampleRate defaults to the one set in your OS for your playback device
 		*/
 		audioContext = new AudioContext();
@@ -121,7 +115,7 @@ function createDownloadLink(blob) {
 	var li = document.createElement('li');
 	var link = document.createElement('a');
 
-	//name of .wav file to use during upload and download (without extendion)
+	//name of .wav file to use during upload and download (without extension)
 	var filename = new Date().toISOString();
 
 	//add controls to the <audio> element
