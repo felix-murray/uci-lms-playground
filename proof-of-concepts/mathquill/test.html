@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>math</title>
+    <link rel="stylesheet" type="text/css" href="http://mathquill.com/lib/mathquill.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
+</head>
+
+<style type="text/css">
+    p {
+  margin-top: 40px;
+}
+#math-field {
+  width: 500px;
+  height: 200px;
+}
+.btn{
+    width: 50px;
+}
+</style>
+<body><center>
+<span id="math-field"></span><br><br><br>
+<div id="keyboard">
+
+    <button type="button" class="btn btn-default" onClick='input("\\theta")'>θ</button>
+    <button type="button" class="btn btn-default" onClick='input("\\tau")'>τ</button>
+    <button type="button" class="btn btn-default" onClick='input("\\chi")'> χ</button>
+    <button type="button" class="btn btn-default" onClick='input("\\sqrt")'> </button>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="http://mathquill.com/lib/mathquill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+<script type="text/javascript">
+    var mathFieldSpan = document.getElementById('math-field');
+    var MQ = MathQuill.getInterface(2);
+    var mathField = MQ.MathField(mathFieldSpan, {
+            spaceBehavesLikeTab: true,
+            handlers: {
+                edit: function() {
+                mathField.focus();
+                }
+            }
+        });
+    const editor = new MathJaxEditorKeyboard('#myEditor')
+
+    function input(str) {
+      mathField.cmd(str);
+      mathField.focus();
+
+    }
+</script>
+
+</html>
